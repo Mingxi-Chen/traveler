@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智能旅行规划助手 - MCP多步骤自动化系统</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🌍 智能旅行规划助手</h1>
+      <p class="subtitle">基于MCP协议的多步骤自动化旅行规划系统</p>
+    </div>
+
+    <div class="demo-banner">
+      ⚡ 演示模式：本界面展示MCP多步骤自动化流程，实际使用需连接MCP服务器
+    </div>
+
+    <div class="main-content">
+      <!-- 左侧：输入表单 -->
+      <div class="card">
+        <h2 class="section-title">旅行信息</h2>
+        <form id="travelForm">
+          <div class="form-group">
+            <label for="origin">出发城市</label>
+            <input type="text" id="origin" placeholder="例如：北京" value="北京">
+          </div>
+
+          <div class="form-group">
+            <label for="destination">目的地城市</label>
+            <input type="text" id="destination" placeholder="例如：上海" value="上海">
+          </div>
+
+          <div class="form-group">
+            <label>旅行日期</label>
+            <div class="date-inputs">
+              <input type="date" id="startDate" value="2025-10-01">
+              <input type="date" id="endDate" value="2025-10-05">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="budget">预算（人民币）</label>
+            <input type="number" id="budget" placeholder="例如：10000" value="10000">
+          </div>
+
+          <div class="form-group">
+            <label for="travelStyle">旅行风格</label>
+            <select id="travelStyle">
+              <option value="balanced">平衡型</option>
+              <option value="budget">经济型</option>
+              <option value="luxury">奢华型</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>兴趣偏好</label>
+            <div class="interests-container">
+              <div class="interest-tag" data-interest="culture">文化历史</div>
+              <div class="interest-tag" data-interest="food">美食</div>
+              <div class="interest-tag" data-interest="shopping">购物</div>
+              <div class="interest-tag" data-interest="nature">自然风光</div>
+              <div class="interest-tag" data-interest="adventure">冒险</div>
+              <div class="interest-tag" data-interest="relaxation">休闲</div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            <span>🚀</span>
+            <span>开始规划旅行</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- 右侧：结果展示 -->
+      <div class="card">
+        <h2 class="section-title">规划结果</h2>
+
+        <!-- 步骤指示器 -->
+        <div class="step-indicator" id="stepIndicator">
+          <div class="step" data-step="1"><div class="step-circle">1</div><div class="step-label">天气查询</div></div>
+          <div class="step" data-step="2"><div class="step-circle">2</div><div class="step-label">航班搜索</div></div>
+          <div class="step" data-step="3"><div class="step-circle">3</div><div class="step-label">酒店预订</div></div>
+          <div class="step" data-step="4"><div class="step-circle">4</div><div class="step-label">景点推荐</div></div>
+          <div class="step" data-step="5"><div class="step-circle">5</div><div class="step-label">餐厅推荐</div></div>
+          <div class="step" data-step="6"><div class="step-circle">6</div><div class="step-label">行程安排</div></div>
+          <div class="step" data-step="7"><div class="step-circle">7</div><div class="step-label">语言准备</div></div>
+          <div class="step" data-step="8"><div class="step-circle">8</div><div class="step-label">预算计算</div></div>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressBar"></div>
+        </div>
+
+        <div id="resultsContainer" class="results-container">
+          <!-- 默认提示 -->
+          <div class="result-card">
+            <div class="result-header">
+              <div class="result-title">等待开始规划...</div>
+            </div>
+            <div class="result-content">
+              请填写左侧的旅行信息，点击"开始规划旅行"按钮，系统将自动执行多步骤规划流程。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 加载覆盖层 -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div>
+      <div class="loader"></div>
+      <div class="status-message" id="statusMessage">正在规划您的旅行...</div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
